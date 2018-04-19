@@ -1,9 +1,19 @@
 HKCR
 {
+	ATL_PR_1.MyMath.1 = s 'MyMath class'
+	{
+		CLSID = s '{ed432f89-78d7-4e1e-a196-820653e8195d}'
+	}
+	ATL_PR_1.MyMath = s 'MyMath class'
+	{		
+		CurVer = s 'ATL_PR_1.MyMath.1'
+	}
 	NoRemove CLSID
 	{
 		ForceRemove {ed432f89-78d7-4e1e-a196-820653e8195d} = s 'MyMath class'
 		{
+			ProgID = s 'ATL_PR_1.MyMath.1'
+			VersionIndependentProgID = s 'ATL_PR_1.MyMath'
 			ForceRemove Programmable
 			InprocServer32 = s '%MODULE%'
 			{
