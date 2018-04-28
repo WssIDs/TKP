@@ -45,6 +45,7 @@ Partial Class Form1
         Me.txtX.Name = "txtX"
         Me.txtX.Size = New System.Drawing.Size(100, 20)
         Me.txtX.TabIndex = 0
+        Me.txtX.Text = "0"
         '
         'txtY
         '
@@ -52,6 +53,7 @@ Partial Class Form1
         Me.txtY.Name = "txtY"
         Me.txtY.Size = New System.Drawing.Size(100, 20)
         Me.txtY.TabIndex = 1
+        Me.txtY.Text = "0"
         '
         'txtZ
         '
@@ -59,6 +61,7 @@ Partial Class Form1
         Me.txtZ.Name = "txtZ"
         Me.txtZ.Size = New System.Drawing.Size(100, 20)
         Me.txtZ.TabIndex = 2
+        Me.txtZ.Text = "0"
         '
         'txtTime1
         '
@@ -66,6 +69,7 @@ Partial Class Form1
         Me.txtTime1.Name = "txtTime1"
         Me.txtTime1.Size = New System.Drawing.Size(100, 20)
         Me.txtTime1.TabIndex = 3
+        Me.txtTime1.Text = "0"
         '
         'txtTime2
         '
@@ -73,6 +77,7 @@ Partial Class Form1
         Me.txtTime2.Name = "txtTime2"
         Me.txtTime2.Size = New System.Drawing.Size(100, 20)
         Me.txtTime2.TabIndex = 4
+        Me.txtTime2.Text = "0"
         '
         'txtTime3
         '
@@ -80,6 +85,7 @@ Partial Class Form1
         Me.txtTime3.Name = "txtTime3"
         Me.txtTime3.Size = New System.Drawing.Size(100, 20)
         Me.txtTime3.TabIndex = 5
+        Me.txtTime3.Text = "0"
         '
         'BT_Late
         '
@@ -113,54 +119,54 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.Size = New System.Drawing.Size(14, 13)
         Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Label1"
+        Me.Label1.Text = "X"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(168, 18)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.Size = New System.Drawing.Size(14, 13)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Label2"
+        Me.Label2.Text = "Y"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(353, 18)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(39, 13)
+        Me.Label3.Size = New System.Drawing.Size(59, 13)
         Me.Label3.TabIndex = 11
-        Me.Label3.Text = "Label3"
+        Me.Label3.Text = "Результат"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(12, 82)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 13)
+        Me.Label4.Size = New System.Drawing.Size(64, 13)
         Me.Label4.TabIndex = 12
-        Me.Label4.Text = "Label4"
+        Me.Label4.Text = "Время Late"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(168, 82)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 13)
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
         Me.Label5.TabIndex = 13
-        Me.Label5.Text = "Label5"
+        Me.Label5.Text = "Время ID"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(353, 82)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(39, 13)
+        Me.Label6.Size = New System.Drawing.Size(61, 13)
         Me.Label6.TabIndex = 14
-        Me.Label6.Text = "Label6"
+        Me.Label6.Text = "Время Vtbl"
         '
         'Form1
         '
