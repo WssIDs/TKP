@@ -1,5 +1,5 @@
 ﻿Public Class Form1
-    Const ITERATIONS = 500000
+    Const ITERATIONS = 50000000
     Private Sub BT_Late_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BT_Late.Click
         ' Пример позднего связывания
         Dim obj As Object

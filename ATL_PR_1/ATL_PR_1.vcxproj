@@ -112,6 +112,7 @@
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\ATL_PR_1.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -144,6 +145,7 @@
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\ATL_PR_1.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -19,6 +19,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab_03", "Lab_03", "{DD76C6F3-0D53-4F59-8B3F-C1C523E50DCD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CClient_LB3", "CClient_LB3\CClient_LB3.vcxproj", "{6BA0FDBD-9EBC-4EAD-BEEE-5499D4BF79F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F796DE0C-9C0E-4B16-885C-473D6D59B269} = {F796DE0C-9C0E-4B16-885C-473D6D59B269}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
