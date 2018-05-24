@@ -18,7 +18,7 @@ namespace СSharpClient_LB3
             InitializeComponent();
         }
 
-        int ITERATIONS = 50000000;
+        int ITERATIONS = 500000;
 
         private void button2_Click(object sender, EventArgs e)
         {
