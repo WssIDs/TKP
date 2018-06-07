@@ -74,7 +74,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="PolyCtl.htm" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="PolyCtl.bmp">
