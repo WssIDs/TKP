@@ -46,7 +46,7 @@ Partial Class Form1
         Me.get_tb.Name = "get_tb"
         Me.get_tb.Size = New System.Drawing.Size(75, 23)
         Me.get_tb.TabIndex = 2
-        Me.get_tb.Text = "Показать"
+        Me.get_tb.Text = "Получить"
         Me.get_tb.UseVisualStyleBackColor = True
         '
         'Label1
