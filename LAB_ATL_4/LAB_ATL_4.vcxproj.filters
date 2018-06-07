@@ -76,16 +76,13 @@
     <None Include="PolyCtl.htm" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="PolyCtl.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="PolyCtl1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <Midl Include="LAB_ATL_4.idl">
       <Filter>Source Files</Filter>
     </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="PolyCtl.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -1,20 +1,20 @@
 HKCR
 {
-	Poly.1.1 = s 'PolyCtl class'
+	ATL4.PolyCtl.1 = s 'PolyCtl class'
 	{
-		CLSID = s '{cbca8fce-a6e1-48d4-9a18-cb1553b081f7}'
+		CLSID = s '{2be8b59c-8d76-4b30-8be0-61798934e98f}'
 		Insertable
 	}
-	Poly.1 = s 'PolyCtl class'
+	ATL4.PolyCtl = s 'PolyCtl class'
 	{		
-		CurVer = s 'Poly.1.1'
+		CurVer = s 'ATL4.PolyCtl.1'
 	}
 	NoRemove CLSID
 	{
-		ForceRemove {cbca8fce-a6e1-48d4-9a18-cb1553b081f7} = s 'PolyCtl class'
+		ForceRemove {2be8b59c-8d76-4b30-8be0-61798934e98f} = s 'PolyCtl class'
 		{
-			ProgID = s 'Poly.1.1'
-			VersionIndependentProgID = s 'Poly.1'
+			ProgID = s 'ATL4.PolyCtl.1'
+			VersionIndependentProgID = s 'ATL4.PolyCtl'
 			ForceRemove Programmable
 			InprocServer32 = s '%MODULE%'
 			{
@@ -22,7 +22,7 @@ HKCR
 			}
 			ForceRemove Control
 			ForceRemove Insertable
-			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 108'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
 			MiscStatus = s '0'
 			{
 			    '1' = s '%OLEMISC%'
