@@ -1,0 +1,34 @@
+HKCR
+{
+	ATLLB4.PolygonCtl.1 = s 'PolygonCtl Class'
+	{
+		CLSID = s '{F841650E-5426-45D0-9B61-55379BAA5EB9}'
+		Insertable
+	}
+	ATLLB4.PolygonCtl = s 'PolygonCtl Class'
+	{		
+		CurVer = s 'ATLLB4.PolygonCtl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F841650E-5426-45D0-9B61-55379BAA5EB9} = s 'PolygonCtl Class'
+		{
+			ProgID = s 'ATLLB4.PolygonCtl.1'
+			VersionIndependentProgID = s 'ATLLB4.PolygonCtl'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove Control
+			ForceRemove Insertable
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
+			MiscStatus = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			TypeLib = s '{94D5B629-E67E-485D-838C-DB3B7070E05C}'
+			Version = s '1.0'
+		}
+	}
+}

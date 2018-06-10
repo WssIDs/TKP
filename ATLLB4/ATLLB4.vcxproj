@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EA42E57C-18E0-4B32-BA01-04C74FB5A849}</ProjectGuid>
-    <Keyword>AtlProj</Keyword>
+    <ProjectGuid>{54DBBE19-4A79-4E69-8266-3F7F35045F2A}</ProjectGuid>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>AtlProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -34,7 +33,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -46,7 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -94,11 +93,11 @@
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>LABATL4_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>LABATL4_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>LABATL4_p.c</ProxyFileName>
+      <HeaderFileName>ATLLB4_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>ATLLB4_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>ATLLB4_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)LABATL4.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)ATLLB4.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -109,7 +108,7 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\LAB_ATL_4.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ATLLB4.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
       <PerUserRedirection>true</PerUserRedirection>
     </Link>
@@ -124,11 +123,11 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>LABATL4_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>LABATL4_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>LABATL4_p.c</ProxyFileName>
+      <HeaderFileName>ATLLB4_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>ATLLB4_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>ATLLB4_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)LABATL4.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)ATLLB4.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -139,8 +138,9 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\LAB_ATL_4.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ATLLB4.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,11 +154,11 @@
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <TargetEnvironment>Win32</TargetEnvironment>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>LABATL4_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>LABATL4_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>LABATL4_p.c</ProxyFileName>
+      <HeaderFileName>ATLLB4_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>ATLLB4_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>ATLLB4_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)LABATL4.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)ATLLB4.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -169,10 +169,11 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\LAB_ATL_4.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ATLLB4.def</ModuleDefinitionFile>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -185,11 +186,11 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <HeaderFileName>LABATL4_i.h</HeaderFileName>
-      <InterfaceIdentifierFileName>LABATL4_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>LABATL4_p.c</ProxyFileName>
+      <HeaderFileName>ATLLB4_i.h</HeaderFileName>
+      <InterfaceIdentifierFileName>ATLLB4_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>ATLLB4_p.c</ProxyFileName>
       <GenerateStublessProxies>true</GenerateStublessProxies>
-      <TypeLibraryName>$(IntDir)LABATL4.tlb</TypeLibraryName>
+      <TypeLibraryName>$(IntDir)ATLLB4.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
@@ -200,43 +201,45 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\LAB_ATL_4.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ATLLB4.def</ModuleDefinitionFile>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ATLLB4.cpp" />
+    <ClCompile Include="ATLLB4_i.c">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="LABATL4_i.c">
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="LAB_ATL_4.cpp" />
-    <ClCompile Include="PolyCtl.cpp" />
+    <ClCompile Include="PolygonCtl.cpp" />
+    <ClCompile Include="PolyProp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -245,32 +248,42 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ATLLB4_i.h" />
     <ClInclude Include="dllmain.h" />
-    <ClInclude Include="LABATL4_i.h" />
-    <ClInclude Include="PolyCtl.h" />
+    <ClInclude Include="PolygonCtl.h" />
+    <ClInclude Include="PolyProp.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="_IPolyCtlEvents_CP.h" />
+    <ClInclude Include="_IPolygonCtlEvents_CP.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="LAB_ATL_4.rc" />
+    <ResourceCompile Include="ATLLB4.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LAB_ATL_4.def" />
-    <None Include="LAB_ATL_4.rgs" />
-    <None Include="PolyCtl.htm">
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ATLLB4.def" />
+    <None Include="ATLLB4.rgs" />
+    <None Include="PolygonCtl.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="PolyCtl.rgs" />
+    <None Include="PolygonCtl.rgs" />
+    <None Include="PolyProp.rgs" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="LAB_ATL_4.idl" />
+    <Midl Include="ATLLB4.idl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="PolyCtl.bmp" />
+    <Image Include="PolygonCtl.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="ATLLB4.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

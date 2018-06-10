@@ -7,14 +7,14 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Generated Files">
-      <UniqueIdentifier>{ae8fb552-d7a6-4581-80c9-50bc834edac6}</UniqueIdentifier>
+      <UniqueIdentifier>{8b4bb465-4b2e-419e-8b14-63d51804ae70}</UniqueIdentifier>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
@@ -22,16 +22,19 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LAB_ATL_4.cpp">
+    <ClCompile Include="ATLLB4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LABATL4_i.c">
+    <ClCompile Include="ATLLB4_i.c">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="PolyCtl.cpp">
+    <ClCompile Include="PolygonCtl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyProp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,40 +51,49 @@
     <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LABATL4_i.h">
+    <ClInclude Include="ATLLB4_i.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="_IPolyCtlEvents_CP.h">
+    <ClInclude Include="_IPolygonCtlEvents_CP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PolyCtl.h">
+    <ClInclude Include="PolygonCtl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyProp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="LAB_ATL_4.rc">
+    <ResourceCompile Include="ATLLB4.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LAB_ATL_4.rgs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="LAB_ATL_4.def">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="PolyCtl.rgs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="PolyCtl.htm" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="LAB_ATL_4.idl">
+    <None Include="ATLLB4.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ATLLB4.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="PolygonCtl.htm" />
+    <None Include="PolygonCtl.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PolyProp.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="ATLLB4.idl">
       <Filter>Source Files</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="PolyCtl.bmp">
+    <Image Include="PolygonCtl.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

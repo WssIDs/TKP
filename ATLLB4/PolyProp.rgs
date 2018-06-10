@@ -1,0 +1,25 @@
+HKCR
+{
+	ATLLB4Lib.CoPolyProp.1 = s 'CoPolyProp Class'
+	{
+		CLSID = s '{CB7DE985-2838-4B2A-A692-70E8A19BCB01}'
+	}
+	ATLLB4Lib.CoPolyProp = s 'CoPolyProp Class'
+	{		
+		CurVer = s 'ATLLB4Lib.CoPolyProp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CB7DE985-2838-4B2A-A692-70E8A19BCB01} = s 'CoPolyProp Class'
+		{
+			ProgID = s 'ATLLB4Lib.CoPolyProp.1'
+			VersionIndependentProgID = s 'ATLLB4Lib.CoPolyProp'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{94D5B629-E67E-485D-838C-DB3B7070E05C}'
+			Version = s '1.0'
+		}
+	}
+}

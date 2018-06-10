@@ -1,0 +1,61 @@
+// ATLLB4.idl : IDL source for ATLLB4
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLLB4.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(FE16BAC5-C08F-4C1C-B99A-C75CD38BC2FD),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IPolygonCtl : IDispatch{
+	[propput, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([out, retval]OLE_COLOR* pclr);
+	[propget, id(1), helpstring("Количество сторон")] HRESULT Sides([out, retval] SHORT* pVal);
+	[propput, id(1), helpstring("Количество сторон")] HRESULT Sides([in] SHORT newVal);
+};
+
+[
+	uuid(94D5B629-E67E-485D-838C-DB3B7070E05C),
+	version(1.0),
+]
+library ATLLB4Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C55882E9-51C1-4822-B2C7-CD4B05F77D63)		
+	]
+	dispinterface _IPolygonCtlEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("Click In")] void ClickIn([in] LONG x,[in] LONG y);
+			[id(2), helpstring("Click Out")] void ClickOut([in] LONG x, [in] LONG y);
+	};
+	[
+		uuid(F841650E-5426-45D0-9B61-55379BAA5EB9),		
+		control
+	]
+	coclass PolygonCtl
+	{
+		[default] interface IPolygonCtl;
+		[default, source] dispinterface _IPolygonCtlEvents;
+	};
+	[
+		uuid(CB7DE985-2838-4B2A-A692-70E8A19BCB01)		
+	]
+	coclass CoPolyProp
+	{
+		[default] interface IUnknown;
+	};
+};
+
