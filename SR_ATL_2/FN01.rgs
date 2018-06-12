@@ -1,9 +1,19 @@
 HKCR
 {
+	SR_ATL2.FN01.1 = s 'CoFN01 class'
+	{
+		CLSID = s '{3d9f6d13-262a-4633-b799-d2fa9ae2656b}'
+	}
+	SR_ATL2.FN01 = s 'CoFN01 class'
+	{		
+		CurVer = s 'SR_ATL2.FN01.1'
+	}
 	NoRemove CLSID
 	{
 		ForceRemove {3d9f6d13-262a-4633-b799-d2fa9ae2656b} = s 'CoFN01 class'
 		{
+			ProgID = s 'SR_ATL2.FN01.1'
+			VersionIndependentProgID = s 'SR_ATL2.FN01'
 			ForceRemove Programmable
 			InprocServer32 = s '%MODULE%'
 			{
