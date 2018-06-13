@@ -16,6 +16,10 @@ import "ocidl.idl";
 	pointer_default(unique)
 ]
 interface IBlueprint : IDispatch{
+	[propget, id(1), helpstring("Максимальное значение координаты X")] HRESULT X([out, retval] SHORT* pVal);
+	[propput, id(1), helpstring("Максимальное значение координаты X")] HRESULT X([in] SHORT newVal);
+	[propget, id(2), helpstring("Максимальное значение координаты Y")] HRESULT Y([out, retval] SHORT* pVal);
+	[propput, id(2), helpstring("Максимальное значение координаты Y")] HRESULT Y([in] SHORT newVal);
 };
 
 [

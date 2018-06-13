@@ -40,6 +40,8 @@ public:
 
 	CBlueprint()
 	{
+		m_X = 0;
+		m_Y = 0;
 	}
 
 DECLARE_OLEMISC_STATUS(OLEMISC_RECOMPOSEONRESIZE |
@@ -137,12 +139,21 @@ public:
 		Rectangle(di.hdcDraw, rc.left, rc.top, rc.right, rc.bottom);
 		SetTextAlign(di.hdcDraw, TA_CENTER|TA_BASELINE);
 		LPCTSTR pszText = _T("Blueprint");
+		LPCTSTR pszX = _T("0");
+		LPCTSTR pszY = _T("0");
+
 #ifndef _WIN32_WCE
 		TextOut(di.hdcDraw,
 			(rc.left + rc.right) / 2,
 			(rc.top + rc.bottom) / 2,
 			pszText,
 			lstrlen(pszText));
+
+		TextOut(di.hdcDraw,
+			(rc.left + rc.right) / 2,
+			((rc.top + rc.bottom) / 2) + 20,
+			(WCHAR*)m_X,
+			lstrlen((WCHAR*)m_X));
 #else
 		ExtTextOut(di.hdcDraw,
 			(rc.left + rc.right) / 2,
@@ -151,6 +162,15 @@ public:
 			NULL,
 			pszText,
 			ATL::lstrlen(pszText),
+			NULL);
+
+		ExtTextOut(di.hdcDraw,
+			(rc.left + rc.right) / 2,
+			((rc.top + rc.bottom) / 2) + 20,
+			ETO_OPAQUE,
+			NULL,
+			pszX,
+			ATL::lstrlen(pszX),
 			NULL);
 #endif
 
@@ -161,6 +181,9 @@ public:
 
 		return S_OK;
 	}
+
+	short m_X;
+	short m_Y;
 
 
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
@@ -173,6 +196,12 @@ public:
 	void FinalRelease()
 	{
 	}
+
+	STDMETHOD(get_X)(SHORT* pVal);
+	STDMETHOD(put_X)(SHORT newVal);
+	STDMETHOD(get_Y)(SHORT* pVal);
+	STDMETHOD(put_Y)(SHORT newVal);
+
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(Blueprint), CBlueprint)
