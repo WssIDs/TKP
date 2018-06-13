@@ -1,0 +1,46 @@
+// SRATL4.idl : IDL source for SRATL4
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SRATL4.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(AB6F03E9-3213-4D29-8E8E-691D22B696FF),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IBlueprint : IDispatch{
+};
+
+[
+	uuid(A68DEEE3-ECE1-437F-83EC-EFB49302A0CC),
+	version(1.0),
+]
+library SRATL4Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8C76200B-D12A-49FA-8AB4-93926E5F0B9C)		
+	]
+	dispinterface _IBlueprintEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(FBF027E5-7A62-4649-AC9C-FC0C8D4EC0EE),		
+		control
+	]
+	coclass Blueprint
+	{
+		[default] interface IBlueprint;
+		[default, source] dispinterface _IBlueprintEvents;
+	};
+};
+

@@ -1,0 +1,34 @@
+HKCR
+{
+	SRATL4.Blueprint.1.1 = s 'Blueprint Class'
+	{
+		CLSID = s '{FBF027E5-7A62-4649-AC9C-FC0C8D4EC0EE}'
+		Insertable
+	}
+	SRATL4.Blueprint.1 = s 'Blueprint Class'
+	{		
+		CurVer = s 'SRATL4.Blueprint.1.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FBF027E5-7A62-4649-AC9C-FC0C8D4EC0EE} = s 'Blueprint Class'
+		{
+			ProgID = s 'SRATL4.Blueprint.1.1'
+			VersionIndependentProgID = s 'SRATL4.Blueprint.1'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove Control
+			ForceRemove Insertable
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
+			MiscStatus = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			TypeLib = s '{A68DEEE3-ECE1-437F-83EC-EFB49302A0CC}'
+			Version = s '1.0'
+		}
+	}
+}
