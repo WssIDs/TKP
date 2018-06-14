@@ -49,11 +49,11 @@ public:
 		{
 			m_Scale = 1;
 		}
+
 		m_BackgroundColor = RGB(255, 255, 255); // белый
 		m_LineColor = RGB(0, 0, 0);
 
-		m_bDraw = FALSE;
-		m_ClickCount = 0;
+		m_ClickCount = 1;
 	}
 
 DECLARE_OLEMISC_STATUS(OLEMISC_RECOMPOSEONRESIZE |
@@ -140,11 +140,11 @@ public:
 		RECT& rect = *(RECT*)di.prcBounds;
 		// ÷вет фона
 		HBRUSH hBrush = CreateSolidBrush(m_BackgroundColor);
-		SelectObject(di.hdcDraw, hBrush);
-		FillRect(di.hdcDraw, &rect, hBrush);
-		Rectangle(di.hdcDraw, rect.left, rect.top, rect.right, rect.bottom);
+		//SelectObject(di.hdcDraw, hBrush);
+		//FillRect(di.hdcDraw, &rect, hBrush);
+		//Rectangle(di.hdcDraw, rect.left, rect.top, rect.right, rect.bottom);
 
-		if (m_bDraw)
+		if (m_ClickCount >= 1)
 		{
 			HRGN hRgnOld = NULL;
 			if (GetClipRgn(di.hdcDraw, hRgnOld) != 1)
@@ -271,7 +271,7 @@ public:
 	}
 
 	bool m_bDraw;
-	int m_ClickCount;
+	short m_ClickCount;
 
 
 	short m_Min;
@@ -304,6 +304,8 @@ public:
 	STDMETHOD(put_LineColor)(OLE_COLOR newVal);
 	LRESULT OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnRButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	STDMETHOD(get_ClickCount)(SHORT* pVal);
+	STDMETHOD(put_ClickCount)(SHORT newVal);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(Blueprint), CBlueprint)

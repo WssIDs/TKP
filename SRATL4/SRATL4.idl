@@ -24,6 +24,8 @@ interface IBlueprint : IDispatch{
 	[propput, id(3), helpstring("Цвет фона")] HRESULT BackgroundColor([in] OLE_COLOR newVal);
 	[propget, id(4), helpstring("Цвет линий")] HRESULT LineColor([out, retval] OLE_COLOR* pVal);
 	[propput, id(4), helpstring("Цвет линий")] HRESULT LineColor([in] OLE_COLOR newVal);
+	[propget, id(5), helpstring("Количество кликов")] HRESULT ClickCount([out, retval] SHORT* pVal);
+	[propput, id(5), helpstring("Количество кликов")] HRESULT ClickCount([in] SHORT newVal);
 };
 
 [

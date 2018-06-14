@@ -77,23 +77,11 @@ STDMETHODIMP CBlueprint::put_LineColor(OLE_COLOR newVal)
 LRESULT CBlueprint::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	// TODO: Add your message handler code here and/or call default	// TODO: Add your message handler code here and/or call default
-	HRGN hRgn;
+
 	WORD xPos = LOWORD(lParam);  // horizontal position of cursor
 	WORD yPos = HIWORD(lParam);  // vertical position of cursor
 
 	Fire_LeftClick(xPos, yPos);
-
-	if (m_bDraw == FALSE)
-	{
-		m_bDraw = TRUE;
-	}
-	else
-	{
-		return ERROR(_T("Нельзя больше кликать левой кнопкой"));
-	}
-
-	FireViewChange();
-
 	return 0;
 }
 
@@ -101,25 +89,50 @@ LRESULT CBlueprint::OnLButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&
 LRESULT CBlueprint::OnRButtonDown(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	// TODO: Add your message handler code here and/or call default
-	HRGN hRgn;
+
 	WORD xPos = LOWORD(lParam);  // horizontal position of cursor
 	WORD yPos = HIWORD(lParam);  // vertical position of cursor
 
-
 	Fire_RightClick(xPos, yPos);
-
-	if (m_bDraw == TRUE)
-	{
-		m_bDraw = FALSE;
-	
-		FireViewChange();
-	}
-	else
-	{
-		return ERROR(_T("Нельзя больше кликать правой кнопкой"));
-	}
-
-
-
 	return 0;
+}
+
+
+STDMETHODIMP CBlueprint::get_ClickCount(SHORT* pVal)
+{
+	// TODO: Add your implementation code here
+	
+	*pVal = m_ClickCount;
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CBlueprint::put_ClickCount(SHORT newVal)
+{
+	// TODO: Add your implementation code here
+	if (newVal >= 1)
+	{
+
+		m_ClickCount = newVal;
+		FireViewChange();
+
+		if (newVal >= 2)
+		{
+			m_ClickCount = 2;
+			return ERROR(_T("Нельзя больше кликать левой кнопкой мыши"));
+		}
+	}
+	else if (newVal <= 0)
+	{
+		m_ClickCount = newVal;
+		FireViewChange();
+
+		if (newVal <= -1)
+		{
+			m_ClickCount = -1;
+			return ERROR(_T("Нельзя больше кликать правой кнопкой мыши"));
+		}
+	}
+	return S_OK;
 }
