@@ -73,10 +73,10 @@
     <None Include="SRATL4.def">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Blueprint.htm" />
     <None Include="Blueprint.rgs">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Blueprint.html" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="SRATL4.idl">

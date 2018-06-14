@@ -43,7 +43,7 @@ library SRATL4Lib
 		properties:
 		methods:
 			[id(1), helpstring("Левый клик")] HRESULT LeftClick([in] LONG x,[in] LONG y);
-			[id(2), helpstring("Правый клик")] HRESULT RightClick([in] LONG x, LONG y);
+			[id(2), helpstring("Правый клик")] HRESULT RightClick([in] LONG x,[in] LONG y);
 	};
 	[
 		uuid(FBF027E5-7A62-4649-AC9C-FC0C8D4EC0EE),		

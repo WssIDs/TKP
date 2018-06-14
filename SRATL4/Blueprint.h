@@ -53,7 +53,7 @@ public:
 		m_BackgroundColor = RGB(255, 255, 255); // белый
 		m_LineColor = RGB(0, 0, 0);
 
-		m_ClickCount = 1;
+		m_ClickCount = 0;
 	}
 
 DECLARE_OLEMISC_STATUS(OLEMISC_RECOMPOSEONRESIZE |
@@ -140,9 +140,9 @@ public:
 		RECT& rect = *(RECT*)di.prcBounds;
 		// Цвет фона
 		HBRUSH hBrush = CreateSolidBrush(m_BackgroundColor);
-		//SelectObject(di.hdcDraw, hBrush);
-		//FillRect(di.hdcDraw, &rect, hBrush);
-		//Rectangle(di.hdcDraw, rect.left, rect.top, rect.right, rect.bottom);
+		SelectObject(di.hdcDraw, hBrush);
+		FillRect(di.hdcDraw, &rect, hBrush);
+		Rectangle(di.hdcDraw, rect.left, rect.top, rect.right, rect.bottom);
 
 		if (m_ClickCount >= 1)
 		{
@@ -195,7 +195,7 @@ public:
 			{
 				x_scr = x * Xscale - Xoffset;
 
-				wchar_t* xc;
+				wchar_t xc[100];
 
 				swprintf(xc, TEXT("%0.1f"), x);
 
@@ -203,8 +203,8 @@ public:
 
 				if (x != 0)
 				{
-					MoveToEx(hdc, x_scr, yMin* YScale - Yoffset, NULL);
-					LineTo(hdc, x_scr, yMax* YScale - Yoffset);
+					MoveToEx(hdc, (int)x_scr, (int)(yMin* YScale - Yoffset), NULL);
+					LineTo(hdc, (int)x_scr, (int)(yMax* YScale - Yoffset));
 				}
 
 				x += 0.5f;
@@ -217,15 +217,15 @@ public:
 			{
 				y_scr = yMin* YScale - Yoffset;
 
-				wchar_t* yc;
+				wchar_t yc[100];
 
 				swprintf(yc, TEXT("%0.0f"), yMin);
 
 				TextOut(hdc, -clientSizeX / 2 + Xoffset, (int)y_scr, yc, lstrlen(yc));
 
 
-				MoveToEx(hdc, m_Min * Xscale - Xoffset, y_scr, NULL);
-				LineTo(hdc, m_Max * Xscale - Xoffset, y_scr);
+				MoveToEx(hdc, (int)(m_Min * Xscale - Xoffset), (int)y_scr, NULL);
+				LineTo(hdc, (int)(m_Max * Xscale - Xoffset), (int)y_scr);
 
 				yMin = yMin + 3.0f;
 			}
@@ -241,8 +241,8 @@ public:
 
 
 			yMin = 4 * m_Min - 7 * sin(m_Min);
-			MoveToEx(hdc, -Xoffset, yMin* YScale - Yoffset, NULL);
-			LineTo(hdc, -Xoffset, yMax* YScale - Yoffset);
+			MoveToEx(hdc, (int)-Xoffset, (int)(yMin* YScale - Yoffset), NULL);
+			LineTo(hdc, (int)-Xoffset, (int)(yMax* YScale - Yoffset));
 
 
 			// Рисование графика
@@ -270,7 +270,6 @@ public:
 		return S_OK;
 	}
 
-	bool m_bDraw;
 	short m_ClickCount;
 
 

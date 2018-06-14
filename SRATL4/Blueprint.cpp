@@ -111,28 +111,22 @@ STDMETHODIMP CBlueprint::get_ClickCount(SHORT* pVal)
 STDMETHODIMP CBlueprint::put_ClickCount(SHORT newVal)
 {
 	// TODO: Add your implementation code here
-	if (newVal >= 1)
+	if (-1 <= newVal && newVal <= 2)
 	{
-
 		m_ClickCount = newVal;
 		FireViewChange();
 
 		if (newVal >= 2)
 		{
-			m_ClickCount = 2;
-			return ERROR(_T("Нельзя больше кликать левой кнопкой мыши"));
+			m_ClickCount = 1;
+			return Error(_T("Нельзя больше кликать левой кнопкой мыши"));
 		}
-	}
-	else if (newVal <= 0)
-	{
-		m_ClickCount = newVal;
-		FireViewChange();
-
 		if (newVal <= -1)
 		{
-			m_ClickCount = -1;
-			return ERROR(_T("Нельзя больше кликать правой кнопкой мыши"));
+			m_ClickCount = 0;
+			return Error(_T("Нельзя больше кликать правой кнопкой мыши"));
 		}
 	}
+
 	return S_OK;
 }
