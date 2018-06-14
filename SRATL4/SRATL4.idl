@@ -16,10 +16,14 @@ import "ocidl.idl";
 	pointer_default(unique)
 ]
 interface IBlueprint : IDispatch{
-	[propget, id(1), helpstring("Максимальное значение координаты X")] HRESULT X([out, retval] SHORT* pVal);
-	[propput, id(1), helpstring("Максимальное значение координаты X")] HRESULT X([in] SHORT newVal);
-	[propget, id(2), helpstring("Максимальное значение координаты Y")] HRESULT Y([out, retval] SHORT* pVal);
-	[propput, id(2), helpstring("Максимальное значение координаты Y")] HRESULT Y([in] SHORT newVal);
+	[propget, id(1), helpstring("Минимальное значение интервала")] HRESULT Min([out, retval] SHORT* pVal);
+	[propput, id(1), helpstring("Минимальное значение интервала")] HRESULT Min([in] SHORT newVal);
+	[propget, id(2), helpstring("Максимальное значение интервала")] HRESULT Max([out, retval] SHORT* pVal);
+	[propput, id(2), helpstring("Максимальное значение интервала")] HRESULT Max([in] SHORT newVal);
+	[propget, id(3), helpstring("Цвет фона")] HRESULT BackgroundColor([out, retval] OLE_COLOR* pVal);
+	[propput, id(3), helpstring("Цвет фона")] HRESULT BackgroundColor([in] OLE_COLOR newVal);
+	[propget, id(4), helpstring("Цвет линий")] HRESULT LineColor([out, retval] OLE_COLOR* pVal);
+	[propput, id(4), helpstring("Цвет линий")] HRESULT LineColor([in] OLE_COLOR newVal);
 };
 
 [
@@ -36,6 +40,8 @@ library SRATL4Lib
 	{
 		properties:
 		methods:
+			[id(1), helpstring("Левый клик")] HRESULT LeftClick([in] LONG x,[in] LONG y);
+			[id(2), helpstring("Правый клик")] HRESULT RightClick([in] LONG x, LONG y);
 	};
 	[
 		uuid(FBF027E5-7A62-4649-AC9C-FC0C8D4EC0EE),		

@@ -2,6 +2,7 @@
 #pragma once
 #include "resource.h"       // main symbols
 #include <atlctl.h>
+#include <wchar.h>
 #include "SRATL4_i.h"
 #include "_IBlueprintEvents_CP.h"
 
@@ -40,8 +41,19 @@ public:
 
 	CBlueprint()
 	{
-		m_X = 0;
-		m_Y = 0;
+		m_Min = -2;
+		m_Max = 3;
+
+		m_Scale = abs(m_Min) + abs(m_Max);
+		if (m_Scale == 0)
+		{
+			m_Scale = 1;
+		}
+		m_BackgroundColor = RGB(255, 255, 255); // белый
+		m_LineColor = RGB(0, 0, 0);
+
+		m_bDraw = FALSE;
+		m_ClickCount = 0;
 	}
 
 DECLARE_OLEMISC_STATUS(OLEMISC_RECOMPOSEONRESIZE |
@@ -93,6 +105,8 @@ END_CONNECTION_POINT_MAP()
 BEGIN_MSG_MAP(CBlueprint)
 	CHAIN_MSG_MAP(CComControl<CBlueprint>)
 	DEFAULT_REFLECTION_HANDLER()
+	MESSAGE_HANDLER(WM_LBUTTONDOWN, OnLButtonDown)
+	MESSAGE_HANDLER(WM_RBUTTONDOWN, OnRButtonDown)
 END_MSG_MAP()
 // Handler prototypes:
 //  LRESULT MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
@@ -122,69 +136,151 @@ END_MSG_MAP()
 public:
 	HRESULT OnDraw(ATL_DRAWINFO& di)
 	{
-		RECT& rc = *(RECT*)di.prcBounds;
-		// Set Clip region to the rectangle specified by di.prcBounds
-		HRGN hRgnOld = NULL;
-		if (GetClipRgn(di.hdcDraw, hRgnOld) != 1)
-			hRgnOld = NULL;
-		bool bSelectOldRgn = false;
 
-		HRGN hRgnNew = CreateRectRgn(rc.left, rc.top, rc.right, rc.bottom);
+		RECT& rect = *(RECT*)di.prcBounds;
+		// Цвет фона
+		HBRUSH hBrush = CreateSolidBrush(m_BackgroundColor);
+		SelectObject(di.hdcDraw, hBrush);
+		FillRect(di.hdcDraw, &rect, hBrush);
+		Rectangle(di.hdcDraw, rect.left, rect.top, rect.right, rect.bottom);
 
-		if (hRgnNew != NULL)
+		if (m_bDraw)
 		{
-			bSelectOldRgn = (SelectClipRgn(di.hdcDraw, hRgnNew) != ERROR);
+			HRGN hRgnOld = NULL;
+			if (GetClipRgn(di.hdcDraw, hRgnOld) != 1)
+				hRgnOld = NULL;
+			bool bSelectOldRgn = false;
+
+			HRGN hRgnNew = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
+
+			if (hRgnNew != NULL)
+			{
+				bSelectOldRgn = (SelectClipRgn(di.hdcDraw, hRgnNew) != ERROR);
+			}
+
+
+			HDC hdc = di.hdcDraw;
+
+			int clientSizeX = 500;
+			int clientSizeY = -1000;
+
+			SetMapMode(hdc, MM_ANISOTROPIC);
+			SetWindowExtEx(hdc, clientSizeX, clientSizeY, NULL);
+			SetViewportExtEx(hdc, rect.right, rect.bottom, NULL);
+			SetViewportOrgEx(hdc, rect.right / 2, rect.bottom / 2, NULL);
+
+			double x = 0;
+			double y = 0;
+			double y_scr = 0;
+			double x_scr = 0;
+			int Xscale = 50;
+			int YScale = 50;
+			int Xoffset = 50;
+			int Yoffset = 200;
+
+			double yMin = 0.0f;
+			double yMax = 0.0f;
+
+			yMin = 4 * m_Min - 7 * sin(m_Min);
+			yMax = 4 * m_Max - 7 * sin(m_Max);
+
+
+			// Рисование вертикальных линий сетки
+
+			HPEN hPen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+			SelectObject(hdc, hPen);
+
+			x = m_Min;
+			while (x <= m_Max)
+			{
+				x_scr = x * Xscale - Xoffset;
+
+				wchar_t* xc;
+
+				swprintf(xc, TEXT("%0.1f"), x);
+
+				TextOut(hdc, (int)x_scr, clientSizeY / 2 + Yoffset, xc, lstrlen(xc));
+
+				if (x != 0)
+				{
+					MoveToEx(hdc, x_scr, yMin* YScale - Yoffset, NULL);
+					LineTo(hdc, x_scr, yMax* YScale - Yoffset);
+				}
+
+				x += 0.5f;
+			}
+
+			// Рисование горизонтальных линий сетки
+
+
+			while (yMin <= yMax)
+			{
+				y_scr = yMin* YScale - Yoffset;
+
+				wchar_t* yc;
+
+				swprintf(yc, TEXT("%0.0f"), yMin);
+
+				TextOut(hdc, -clientSizeX / 2 + Xoffset, (int)y_scr, yc, lstrlen(yc));
+
+
+				MoveToEx(hdc, m_Min * Xscale - Xoffset, y_scr, NULL);
+				LineTo(hdc, m_Max * Xscale - Xoffset, y_scr);
+
+				yMin = yMin + 3.0f;
+			}
+
+
+			// Рисование осей сетки
+
+			hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+			SelectObject(hdc, hPen);
+
+			MoveToEx(hdc, m_Min * Xscale - Xoffset, -Yoffset, NULL);
+			LineTo(hdc, m_Max * Xscale - Xoffset, -Yoffset);
+
+
+			yMin = 4 * m_Min - 7 * sin(m_Min);
+			MoveToEx(hdc, -Xoffset, yMin* YScale - Yoffset, NULL);
+			LineTo(hdc, -Xoffset, yMax* YScale - Yoffset);
+
+
+			// Рисование графика
+
+			hPen = CreatePen(PS_SOLID, 5, m_LineColor);
+			SelectObject(hdc, hPen);
+			x = m_Min;
+			x_scr = x * Xscale - Xoffset;
+			y = 4 * x - 7 * sin(x);
+			y_scr = y * YScale - Yoffset;
+			MoveToEx(hdc, (int)x_scr, (int)y_scr, NULL);
+
+			while (x <= m_Max)
+			{
+				y = 4 * x - 7 * sin(x);
+				x_scr = x * Xscale - Xoffset;
+				y_scr = y * YScale - Yoffset;
+				LineTo(hdc, (int)x_scr, (int)y_scr);
+				x += 0.1f;
+
+			}
 		}
 
-		Rectangle(di.hdcDraw, rc.left, rc.top, rc.right, rc.bottom);
-		SetTextAlign(di.hdcDraw, TA_CENTER|TA_BASELINE);
-		LPCTSTR pszText = _T("Blueprint");
-		LPCTSTR pszX = _T("0");
-		LPCTSTR pszY = _T("0");
-
-#ifndef _WIN32_WCE
-		TextOut(di.hdcDraw,
-			(rc.left + rc.right) / 2,
-			(rc.top + rc.bottom) / 2,
-			pszText,
-			lstrlen(pszText));
-
-		TextOut(di.hdcDraw,
-			(rc.left + rc.right) / 2,
-			((rc.top + rc.bottom) / 2) + 20,
-			(WCHAR*)m_X,
-			lstrlen((WCHAR*)m_X));
-#else
-		ExtTextOut(di.hdcDraw,
-			(rc.left + rc.right) / 2,
-			(rc.top + rc.bottom) / 2,
-			ETO_OPAQUE,
-			NULL,
-			pszText,
-			ATL::lstrlen(pszText),
-			NULL);
-
-		ExtTextOut(di.hdcDraw,
-			(rc.left + rc.right) / 2,
-			((rc.top + rc.bottom) / 2) + 20,
-			ETO_OPAQUE,
-			NULL,
-			pszX,
-			ATL::lstrlen(pszX),
-			NULL);
-#endif
-
-		if (bSelectOldRgn)
-			SelectClipRgn(di.hdcDraw, hRgnOld);
-
-		DeleteObject(hRgnNew);
 
 		return S_OK;
 	}
 
-	short m_X;
-	short m_Y;
+	bool m_bDraw;
+	int m_ClickCount;
 
+
+	short m_Min;
+	short m_Max;
+
+	int m_Scale;
+
+	OLE_COLOR m_BackgroundColor;
+	OLE_COLOR m_LineColor;
 
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
 
@@ -197,11 +293,17 @@ public:
 	{
 	}
 
-	STDMETHOD(get_X)(SHORT* pVal);
-	STDMETHOD(put_X)(SHORT newVal);
-	STDMETHOD(get_Y)(SHORT* pVal);
-	STDMETHOD(put_Y)(SHORT newVal);
+	STDMETHOD(get_Min)(SHORT* pVal);
+	STDMETHOD(put_Min)(SHORT newVal);
+	STDMETHOD(get_Max)(SHORT* pVal);
+	STDMETHOD(put_Max)(SHORT newVal);
 
+	STDMETHOD(get_BackgroundColor)(OLE_COLOR* pVal);
+	STDMETHOD(put_BackgroundColor)(OLE_COLOR newVal);
+	STDMETHOD(get_LineColor)(OLE_COLOR* pVal);
+	STDMETHOD(put_LineColor)(OLE_COLOR newVal);
+	LRESULT OnLButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnRButtonDown(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(Blueprint), CBlueprint)
